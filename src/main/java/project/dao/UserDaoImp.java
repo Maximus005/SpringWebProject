@@ -23,7 +23,7 @@ public class UserDaoImp implements UserDao {
     public boolean SignUp(String firstName, String lastName, String email, String password) {
         Integer userId = Repository.userId++;
         users.add(new User(userId, firstName, lastName, email, password));
-        return false;
+        return true;
     }
 
     @Override

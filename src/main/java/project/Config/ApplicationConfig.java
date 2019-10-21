@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import project.service.UserService;
 import project.service.UserServiceImp;
 
-@Configuration
-@ComponentScan
+//@Configuration
+//@ComponentScan
 public class ApplicationConfig {
     public static void main(String[] args) {
 //        AnnotationConfigApplicationContext context

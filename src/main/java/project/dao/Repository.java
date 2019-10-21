@@ -11,12 +11,11 @@ import java.util.List;
  * Pseudo repo using for data storage
  */
 
-@Component
 public class Repository {
 
-    static int taskId;
-    static int userId;
+    public static int taskId;
+    public static int userId;
 
-    static List<Task> tasks = new ArrayList<>();
-    static List<User> users = new ArrayList<>();
+    public static List<Task> tasks = new ArrayList<>();
+    public static List<User> users = new ArrayList<>();
 }
