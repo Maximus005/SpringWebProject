@@ -1,7 +1,7 @@
-package controller;
+package project.controller;
 
 import org.springframework.stereotype.Component;
-import service.UserService;
+import project.service.UserService;
 
 @Component
 public class UserController {

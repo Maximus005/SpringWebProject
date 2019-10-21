@@ -1,15 +1,15 @@
-package dao;
+package project.dao;
 
-import model.Status;
-import model.Task;
-import model.User;
+import project.model.Status;
+import project.model.Task;
+import project.model.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static dao.Repository.tasks;
-import static dao.Repository.users;
+import static project.dao.Repository.tasks;
+import static project.dao.Repository.users;
 
 //TODO rewrite cycles via streams
 

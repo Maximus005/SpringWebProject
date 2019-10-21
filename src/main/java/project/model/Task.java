@@ -1,4 +1,4 @@
-package model;
+package project.model;
 
 import org.springframework.stereotype.Component;
 
@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 //TODO add ref to user object
 
-@Component
 public class Task {
     private Integer idTask;
     private Integer idUser;

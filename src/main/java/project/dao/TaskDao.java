@@ -1,14 +1,14 @@
-package dao;
+package project.dao;
 //TODO sing in/up, create/delete/ task, find all my task, mark as finished or unfinished.
 
-import model.Status;
-import model.Task;
-import model.User;
+import project.model.Status;
+import project.model.Task;
+import project.model.User;
 
 import java.util.List;
 
 /**
- * Interface for working with DataBase for Task model.
+ * Interface for working with DataBase for Task projwct.model.
  * */
 
 public interface TaskDao {

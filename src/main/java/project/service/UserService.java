@@ -1,8 +1,8 @@
-package service;
+package project.service;
 
-import model.Status;
-import model.Task;
-import model.User;
+import project.model.Status;
+import project.model.Task;
+import project.model.User;
 
 import java.util.List;
 

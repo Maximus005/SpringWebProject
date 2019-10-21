@@ -1,13 +1,13 @@
-package service;
+package project.service;
 
-//import dao.TaskDaoImp;
-//import dao.UserDaoImp;
-import dao.TaskDaoImp;
-import dao.UserDao;
-import dao.UserDaoImp;
-import model.Status;
-import model.Task;
-import model.User;
+//import projwct.dao.TaskDaoImp;
+//import projwct.dao.UserDaoImp;
+import project.dao.TaskDaoImp;
+import project.dao.UserDao;
+import project.dao.UserDaoImp;
+import project.model.Status;
+import project.model.Task;
+import project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

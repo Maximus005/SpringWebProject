@@ -1,9 +1,9 @@
-package dao;
+package project.dao;
 
 //TODO sing in/up, create/delete/ task, find all my task, mark as finished or unfinished.
 
 /**
- * Interface for working with DataBase for User model.
+ * Interface for working with DataBase for User projwct.model.
  * */
 
 public interface UserDao {

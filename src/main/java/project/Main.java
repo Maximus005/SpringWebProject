@@ -1,15 +1,17 @@
+package project;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import service.UserService;
-import service.UserServiceImp;
+import project.service.UserService;
+import project.service.UserServiceImp;
 
 @Configuration
-@ComponentScan(basePackages = "")
-public class ApplicationConfig {
+@ComponentScan
+public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context
-                = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+                = new AnnotationConfigApplicationContext(Main.class);
 
         UserService userServiceImp = context.getBean(UserServiceImp.class);
 

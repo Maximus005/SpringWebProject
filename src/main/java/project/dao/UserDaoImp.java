@@ -1,9 +1,9 @@
-package dao;
+package project.dao;
 
-import model.User;
+import project.model.User;
 import org.springframework.stereotype.Component;
 
-import static dao.Repository.users;
+import static project.dao.Repository.users;
 
 //TODO replace cycles via streams
 

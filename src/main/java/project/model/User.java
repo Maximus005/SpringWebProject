@@ -1,4 +1,4 @@
-package model;
+package project.model;
 
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,6 @@ import java.util.List;
 //TODO try to use another data str. for tasks and users
 //TODO auto_increment realisation ? interaction with data from database ?
 
-@Component
 public class User {
     private Integer idUser;
     private String firstName;
