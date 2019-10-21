@@ -1,8 +1,23 @@
-import java.time.LocalDate;
+package model;
 
-class User {
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+//TODO try to use another data str. for tasks and users
+//TODO auto_increment realisation ? interaction with data from database ?
+
+@Component
+public class User {
     private Integer idUser;
     private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private LocalDate registrationDate;
+    private List<Task> tasks = new ArrayList<>();
 
     public User(Integer idUser, String firstName, String lastName,
                 String email, String password) {
@@ -14,12 +29,6 @@ class User {
         this.registrationDate = LocalDate.now();
     }
 
-    private String lastName;
-    private String email;
-    private String password;
-    private LocalDate registrationDate;
-
-    //TODO auto_increment realisation ? interaction with data from database ?
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }

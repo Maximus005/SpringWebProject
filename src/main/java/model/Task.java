@@ -1,7 +1,13 @@
+package model;
+
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 
+//TODO add ref to user object
 
-class Task {
+@Component
+public class Task {
     private Integer idTask;
     private Integer idUser;
     private User user;
@@ -10,13 +16,17 @@ class Task {
     private LocalDate startTime;
     private LocalDate endTime;
 
-    public Task(Integer idTask, Integer idUser,
+    public Task(Integer idTask, User user,
                 String taskName, Status status) {
         this.idTask = idTask;
-        this.idUser = idUser;
+        this.user = user;
         this.taskName = taskName;
-        this.status = status;
+        this.status = Status.IN_PROGRESS;
         this.startTime = LocalDate.now();
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public Integer getIdTask() {
@@ -67,5 +77,9 @@ class Task {
     public void setEndTime(LocalDate endTime) {
         startTime = LocalDate.now();
         this.endTime = endTime;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
