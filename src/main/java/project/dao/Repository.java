@@ -7,10 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Pseudo repo using for data storage
- */
-
+@Component
 public class Repository {
     public static List<Task> tasks = new ArrayList<>();
     public static List<User> users = new ArrayList<>();

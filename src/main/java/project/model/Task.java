@@ -2,6 +2,7 @@ package project.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 import project.dao.TaskPriority;
 import project.dao.TaskStatus;
 
@@ -20,7 +21,7 @@ public class Task {
     private int userId;
     private TaskPriority taskPriority;
 
-    public Task(Integer id, String taskName, int userId) {
+    public Task(int id, String taskName, int userId) {
         this.id = id;
         this.userId = userId;
         this.taskName = taskName;
