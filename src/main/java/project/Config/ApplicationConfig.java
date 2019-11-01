@@ -1,11 +1,5 @@
 package project.Config;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import project.service.UserService;
-import project.service.UserServiceImp;
-
 //@Configuration
 //@ComponentScan
 public class ApplicationConfig {
