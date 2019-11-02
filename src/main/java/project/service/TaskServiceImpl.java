@@ -2,6 +2,7 @@ package project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import project.dao.TaskDao;
 import project.dao.TaskDaoImpl;
 import project.dao.TaskPriority;
 import project.dao.TaskStatus;
@@ -13,7 +14,7 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService{
 
     @Autowired
-    TaskDaoImpl taskDaoImpl;
+    TaskDao taskDaoImpl;
 
     @Override
     public Task createTask(int taskId, String taskName, int userId) {

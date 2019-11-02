@@ -13,9 +13,6 @@ import static project.dao.Repository.users;
 @Component
 public class UserServiceImpl implements UserService {
 
-    private String subscription  = "secret";
-    private String algorithmName = "MD5";
-
     @Autowired
     UserDaoImpl userDaoImpl;
 
@@ -39,11 +36,11 @@ public class UserServiceImpl implements UserService {
     // Как лучше ставить блок try: локально илиболее глобально?
     @Override
     public String addSubscriptionToUserById(int userId) {
+        String hash = null;
         for(User user : users) {
             if(user.getId() == userId) {
-                String hash = null;
                 try {
-                    hash = generateHashForSubscription(algorithmName, subscription);
+                    hash = generateHashForSubscription(Security.algorithmName, Security.subscription);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -66,7 +63,7 @@ public class UserServiceImpl implements UserService {
     public boolean deleteSubscriptionFromUserById(int userId) {
         for(User user : users) {
             if(user.getId() == userId) {
-                user.setSubscription(null);
+                user.setSubscription("");
                 return true;
             }
         }

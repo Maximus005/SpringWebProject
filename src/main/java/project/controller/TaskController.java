@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 public class TaskController {
-    TaskService taskService;
+    private TaskService taskService;
 
     @Autowired
     public TaskController(TaskService taskService) {
