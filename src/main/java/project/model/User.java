@@ -17,6 +17,7 @@ public class User {
     private String email;
     private String password;
     private final LocalDate registrationDate;
+    private String subscription;
 
     public User(int id, String firstName, String lastName,
                 String email, String password) {

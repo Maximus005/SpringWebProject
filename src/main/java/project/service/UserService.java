@@ -13,4 +13,8 @@ public interface UserService {
     User signIn(int userId);
 
     boolean retire(int userId);
+
+    String addSubscriptionToUserById(int userId);
+
+    boolean deleteSubscriptionFromUserById(int userId);
 }

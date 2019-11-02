@@ -1,17 +1,20 @@
 package project.service;
 
-import project.dao.TaskDaoImpl;
 import project.dao.UserDaoImpl;
-import project.dao.TaskStatus;
-import project.model.Task;
 import project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+
+import static project.dao.Repository.users;
 
 @Component
 public class UserServiceImpl implements UserService {
+
+    private String subscription  = "secret";
+    private String algorithmName = "MD5";
 
     @Autowired
     UserDaoImpl userDaoImpl;
@@ -30,5 +33,43 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean retire(int userId) {
         return userDaoImpl.deleteUserById(userId);
+    }
+
+    //TODO (3) лучше возвращать булеан, стрингу хэшкода или... И что делать если юзер не найден ?
+    // Как лучше ставить блок try: локально илиболее глобально?
+    @Override
+    public String addSubscriptionToUserById(int userId) {
+        for(User user : users) {
+            if(user.getId() == userId) {
+                String hash = null;
+                try {
+                    hash = generateHashForSubscription(algorithmName, subscription);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                user.setSubscription(hash);
+                return hash;
+            }
+        }
+        return null;
+    }
+
+    //TODO (2)
+    private String generateHashForSubscription(String algorithmName, String stringForCoding)
+                                                                          throws Exception {
+            MessageDigest md = MessageDigest.getInstance(algorithmName);
+            md.update(stringForCoding.getBytes());
+            return DatatypeConverter.printHexBinary(md.digest()).toUpperCase();
+    }
+
+    @Override
+    public boolean deleteSubscriptionFromUserById(int userId) {
+        for(User user : users) {
+            if(user.getId() == userId) {
+                user.setSubscription(null);
+                return true;
+            }
+        }
+        return false;
     }
 }

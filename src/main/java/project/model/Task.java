@@ -36,4 +36,18 @@ public class Task {
     public void setEndTime() {
         this.endTime = LocalDate.now();
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", taskName='" + taskName + '\'' +
+                ", taskStatus=" + taskStatus +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", description='" + description + '\'' +
+                ", userId=" + userId +
+                ", taskPriority=" + taskPriority +
+                '}';
+    }
 }

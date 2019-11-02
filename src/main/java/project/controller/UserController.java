@@ -5,6 +5,11 @@ import org.springframework.stereotype.Component;
 import project.model.User;
 import project.service.UserService;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+
+import static project.dao.Repository.users;
+
 @Component
 public class UserController {
     private UserService userService;
@@ -25,5 +30,13 @@ public class UserController {
 
     public boolean retire(int userId) {
         return userService.retire(userId);
+    }
+
+    public String addSubscriptionToUserById(int userId) {
+       return userService.addSubscriptionToUserById(userId);
+    }
+
+    public boolean deleteSubscriptionFromUserById(int userId) {
+       return userService.deleteSubscriptionFromUserById(userId);
     }
 }

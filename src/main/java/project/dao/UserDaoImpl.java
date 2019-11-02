@@ -28,4 +28,21 @@ public class UserDaoImpl implements UserDao {
         users.remove(users.stream().filter(user -> user.getId() == userId).findFirst().get());
         return true;
     }
+
+    //TODO (1) м.б. если юзер не найден то  кидать исключение ?
+    @Override
+    public User updateUser(int userId, User userForUpdate) {
+        for (User user : users) {
+            if(user.getId()  == userId) {
+                user.setSubscription(userForUpdate.getSubscription());
+                user.setEmail(userForUpdate.getEmail());
+                user.setFirstName(userForUpdate.getFirstName());
+                user.setLastName(userForUpdate.getLastName());
+                user.setPassword(userForUpdate.getPassword());
+                return user;
+            }
+        }
+        return null;
+    }
+
 }
