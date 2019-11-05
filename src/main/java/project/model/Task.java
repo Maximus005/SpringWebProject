@@ -2,9 +2,6 @@ package project.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
-import project.dao.TaskPriority;
-import project.dao.TaskStatus;
 
 import java.time.LocalDate;
 
@@ -14,27 +11,16 @@ public class Task {
 
     private int id;
     private String taskName;
-    private TaskStatus taskStatus;
-    private LocalDate startTime;
-    private LocalDate endTime;
-    private String description;
+    private LocalDate dateOfFinished;
+    private String description = "";
     private int userId;
     private TaskPriority taskPriority;
+    private boolean status;
 
-    public Task(int id, String taskName, int userId) {
-        this.id = id;
+    public Task(String taskName, int userId) {
         this.userId = userId;
         this.taskName = taskName;
-        this.taskStatus = TaskStatus.IN_PROGRESS;
         this.taskPriority = TaskPriority.MEDIUM;
-        this.startTime = LocalDate.now();
-    }
-
-    public void setStartTime() {
-        this.startTime = LocalDate.now();
-    }
-    public void setEndTime() {
-        this.endTime = LocalDate.now();
     }
 
     @Override
@@ -42,12 +28,11 @@ public class Task {
         return "Task{" +
                 "id=" + id +
                 ", taskName='" + taskName + '\'' +
-                ", taskStatus=" + taskStatus +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
+                ", dateOfFinished=" + dateOfFinished +
                 ", description='" + description + '\'' +
                 ", userId=" + userId +
                 ", taskPriority=" + taskPriority +
+                ", status=" + status +
                 '}';
     }
 }

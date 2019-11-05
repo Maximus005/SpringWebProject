@@ -1,18 +1,17 @@
 package project.dao;
 
 import project.model.User;
-
-import java.util.Optional;
+import project.model.UserRole;
 
 public interface UserDao {
 
-    User createUser(int userId, String firstName, String lastName,
-                        String email, String password);
+    User createUser(String firstName, String lastName,
+                        String email, String password, UserRole userRole);
 
     User findUserById(int userId);
 
     boolean deleteUserById(int userId);
 
-    User updateUser(int userId, User user);
+    boolean updateUser(User user);
 
 }

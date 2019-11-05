@@ -1,0 +1,3 @@
+insert into user (firstName, lastName, email, password, registrationDate, subscription, userRole) values('Max','Tarasov','tarasov@epam.com','pass','2019-08-12','',1);
+insert into user (firstName, lastName, email, password, registrationDate, subscription, userRole) values('Oleg','Ivanov','ivanov2@epam.com','pass','2019-09-22','',2);
+insert into user (firstName, lastName, email, password, registrationDate, subscription, userRole) values('Jamal','Dagov','dagov05@epam.com','pass','2019-04-12','',1);

@@ -13,15 +13,14 @@ import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static project.dao.Repository.users;
 import static project.service.Security.algorithmName;
 import static project.service.Security.subscription;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 
 public class VerifierOfUserStatusAndNumberOfTasks {
-    @Autowired
+    //@Autowired
     TaskServiceImpl taskService;
 
     @Pointcut("execution(* project.dao.TaskDao.createTask(..))")
@@ -29,17 +28,17 @@ public class VerifierOfUserStatusAndNumberOfTasks {
 
     @Before("handle()")
     public void aspect(JoinPoint joinPoint) {
-        try {
-            Integer userId = (Integer) joinPoint.getArgs()[2];
-            for (User user : users) {
-                if(user.getId() == userId) {
-                    String localValueOfSubscription = DatatypeConverter
-                            .printHexBinary(MessageDigest.getInstance(algorithmName).digest(subscription.getBytes()));
-                    if(!user.getSubscription().equals(localValueOfSubscription) && taskService.findAllTasksByUserId(userId).size() > 10) {
-                        throw new RuntimeException("User has free account and can not add more than 10 tasks");
-                    }
-                }
-            }
-        } catch (NoSuchAlgorithmException exp) { System.out.println(exp); }
+//        try {
+//            Integer userId = (Integer) joinPoint.getArgs()[2];
+//            for (User user : users) {
+//                if(user.getId() == userId) {
+//                    String localValueOfSubscription = DatatypeConverter
+//                            .printHexBinary(MessageDigest.getInstance(algorithmName).digest(subscription.getBytes()));
+//                    if(!user.getSubscription().equals(localValueOfSubscription) && taskService.findAllTasksByUserId(userId).size() >= 10) {
+//                        throw new RuntimeException("User has free account and can not add more than 10 tasks");
+//                    }
+//                }
+//            }
+//        } catch (NoSuchAlgorithmException exp) { System.out.println(exp); }
     }
 }

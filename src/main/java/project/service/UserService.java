@@ -1,18 +1,15 @@
 package project.service;
 
-import project.dao.TaskStatus;
-import project.model.Task;
 import project.model.User;
-
-import java.util.List;
+import project.model.UserRole;
 
 public interface UserService {
-    User signUp(int userId, String firstName, String lastName,
-                    String email, String password);
+    User signUp(String firstName, String lastName,
+                String email, String password, UserRole userRole);
 
     User signIn(int userId);
 
-    boolean retire(int userId);
+    boolean deleteUserById(int userId);
 
     String addSubscriptionToUserById(int userId);
 

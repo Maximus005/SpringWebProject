@@ -16,17 +16,19 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private final LocalDate registrationDate;
+    private LocalDate registrationDate;
     private String subscription = "";
+    private UserRole userRole;
 
     public User(int id, String firstName, String lastName,
-                String email, String password) {
+                String email, String password, UserRole userRole) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.registrationDate = LocalDate.now();
+        this.userRole = userRole;
     }
 
     @Override
@@ -39,6 +41,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", registrationDate=" + registrationDate +
                 ", subscription='" + subscription + '\'' +
+                ", userRole=" + userRole +
                 '}';
     }
 }

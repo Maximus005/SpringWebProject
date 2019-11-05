@@ -1,48 +1,45 @@
 package project.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import project.dao.TaskDao;
-import project.dao.TaskDaoImpl;
-import project.dao.TaskPriority;
-import project.dao.TaskStatus;
+import project.model.TaskPriority;
 import project.model.Task;
 
 import java.util.List;
 
-@Component
+//@Component
 public class TaskServiceImpl implements TaskService{
-
-    @Autowired
-    TaskDao taskDaoImpl;
 
     @Override
     public Task createTask(int taskId, String taskName, int userId) {
-        return taskDaoImpl.createTask(taskId, taskName,userId);
+        return null;
     }
 
     @Override
     public boolean deleteTaskById(int taskId) {
-        return taskDaoImpl.deleteTaskById(taskId);
+        return false;
     }
 
     @Override
-    public TaskStatus setTaskStatusById(int taskId, TaskStatus taskStatus) {
-        return taskDaoImpl.setTaskStatusById(taskId, taskStatus);
+    public boolean markTaskAsFinishedById(int taskId) {
+        return false;
+    }
+
+    @Override
+    public boolean markTaskAsUnFinishedById(int taskId) {
+        return false;
     }
 
     @Override
     public TaskPriority setTaskPriorityById(int taskId, TaskPriority taskPriority) {
-        return taskDaoImpl.setTaskPriorityById(taskId, taskPriority);
+        return null;
     }
 
     @Override
     public List<Task> findAllTasksByUserId(int userId) {
-        return taskDaoImpl.findAllTasksByUserId(userId);
+        return null;
     }
 
     @Override
     public List<Task> findAllTasks() {
-        return taskDaoImpl.findAllTasks();
+        return null;
     }
 }
