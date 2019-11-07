@@ -1,18 +1,21 @@
 package project;
 
+import LegacySecurityModule.SecurityModuleImpl;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.*;
 import project.dao.TaskDaoJdbcImpl;
 import project.dao.UserDaoJdbcImpl;
-import project.model.TaskPriority;
 
 @Configuration
-@ComponentScan(value = "project")
-@EnableAspectJAutoProxy
+@ComponentScan@EnableAspectJAutoProxy
 public class Main {
+
+    @Bean
+    SecurityModuleImpl returnSecurityModuleImpl() {
+        return new SecurityModuleImpl();
+    }
+
+
     public static void main(String[] args) {
         ApplicationContext context =
                 new AnnotationConfigApplicationContext(Main.class);
@@ -29,6 +32,6 @@ public class Main {
         jdbcTask.deleteTaskById(8);
         jdbcTask.findAllTasks().forEach(System.out::println);
 
-
+        System.out.println(jdbcUser.securityModuleImpl.isAdmin("ADMIN"));
     }
 }

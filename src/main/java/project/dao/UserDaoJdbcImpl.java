@@ -1,16 +1,21 @@
 package project.dao;
 
+import LegacySecurityModule.SecurityModuleImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import project.model.User;
 import project.model.UserRole;
+//import LegacySecurityModule
 
 import java.time.LocalDate;
 
 @Component
 public class UserDaoJdbcImpl implements UserDao {
+
+    @Autowired(required=true)
+    public SecurityModuleImpl securityModuleImpl;
 
     private final JdbcTemplate jdbcTemplate;
     private final RowMapper<User> userRowMapper = new UserRowMapper();

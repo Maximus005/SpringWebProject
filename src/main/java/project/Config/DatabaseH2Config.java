@@ -16,14 +16,14 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @Configuration
-@PropertySource("classpath:/db.properties")
+//@PropertySource("classpath:/db.properties")
 public class DatabaseH2Config {
-    @Value("${url}")
-    private String  url;
-    @Value("${user}")
-    private String  user;
-    @Value("${password}")
-    private String password;
+    //@Value("${url}")
+    private String  url = "jdbc:h2:~/IdeaProjects/EpamLab/SpringCourse/SpringWebProject/database";
+    //@Value("${user}")
+    private String  user = "u";
+    //@Value("${password}")
+    private String password = "u";
 
     ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
 
