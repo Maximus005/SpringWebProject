@@ -9,6 +9,9 @@ import project.model.UserRole;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 
+import static project.service.Security.algorithmName;
+import static project.service.Security.subscription;
+
 @Component
 public class UserServiceImpl implements UserService {
 
@@ -34,12 +37,16 @@ public class UserServiceImpl implements UserService {
 
 
     //TODO (3) лучше возвращать булеан, стрингу хэшкода или... И что делать если юзер не найден ?
-    // Как лучше ставить блок try: локально илиболее глобально?
     @Override
-    public String addSubscriptionToUserById(int userId) {
-        String hash = null;
+    public String addSubscriptionToUserById(int id) {
+        String hash = "";
+        try {
+            hash = generateHashForSubscription(algorithmName, subscription);
+        } catch (Exception e) { e.printStackTrace(); }
 
-        return null;
+        userDaoJdbc.updateSubscriptionById(hash, id);
+
+        return hash;
     }
 
     //TODO (2)
@@ -51,8 +58,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteSubscriptionFromUserById(int userId) {
-
-        return false;
+    public boolean deleteSubscriptionFromUserById(int id) {
+        userDaoJdbc.updateSubscriptionById("", id);
+        return true;
     }
 }

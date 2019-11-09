@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Component
 public class UserDaoJdbcImpl implements UserDao {
 
-    @Autowired(required=true)
+    @Autowired
     public SecurityModuleImpl securityModuleImpl;
 
     private final JdbcTemplate jdbcTemplate;
@@ -25,6 +25,7 @@ public class UserDaoJdbcImpl implements UserDao {
     private final String FIND_BY_ID = "SELECT * FROM USER WHERE id = ?";
     private final String FIND_BY_EMAIL  = "SELECT * FROM USER WHERE EMAIL = ?";
     private final String UPDATE_BY_ID = "UPDATE USER SET FIRSTNAME=?, LASTNAME=?, EMAIL=?, PASSWORD=?, SUBSCRIPTION=?, USERROLE=? WHERE id=?";
+    private final String UPDATE_SUBSCRIPTION_BY_ID = "UPDATE USER SET SUBSCRIPTION=? WHERE id=?";
 
     @Autowired
     public UserDaoJdbcImpl(JdbcTemplate jdbcTemplate) {
@@ -63,6 +64,12 @@ public class UserDaoJdbcImpl implements UserDao {
                 user.getUserRole().getI(),
                 user.getId()
         );
+        return true;
+    }
+
+    @Override
+    public boolean updateSubscriptionById(String hash, int id) {
+        jdbcTemplate.update(UPDATE_SUBSCRIPTION_BY_ID, hash, id);
         return true;
     }
 }

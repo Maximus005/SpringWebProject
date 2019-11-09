@@ -14,4 +14,5 @@ public interface UserDao {
 
     boolean updateUser(User user);
 
+    boolean updateSubscriptionById(String hash, int id);
 }
