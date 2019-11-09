@@ -1,18 +1,19 @@
 package project.controller;
 
-import project.model.TaskPriority;
-import project.model.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import project.service.TaskService;
 
 import java.util.List;
 
-//@Component
+@Component
 public class TaskController {
-    private TaskService taskService;
+    private TaskService taskServiceImpl;
 
-    //@Autowired
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
+    @Autowired
+    public TaskController(TaskService taskServiceImpl) {
+        this.taskServiceImpl = taskServiceImpl;
     }
+
 
 }

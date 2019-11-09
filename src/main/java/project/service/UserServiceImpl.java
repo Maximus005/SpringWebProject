@@ -1,5 +1,6 @@
 package project.service;
 
+import project.dao.UserDao;
 import project.dao.UserDaoJdbcImpl;
 import project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,51 +16,53 @@ import static project.service.Security.subscription;
 @Component
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    UserDaoJdbcImpl userDaoJdbc;
+    UserDao userDaoJdbcImpl;
 
-    @Override
-    public User signUp(String firstName, String lastName,
-                       String email, String password, UserRole userRole) {
-        userDaoJdbc.createUser(firstName, lastName, email, password, userRole);
-        return null;
+    @Autowired
+    public UserServiceImpl(UserDaoJdbcImpl userDaoJdbcImpl) {
+        this.userDaoJdbcImpl = userDaoJdbcImpl;
     }
 
     @Override
-    public User signIn(int userId) {
-        return null;
+    public User createUser(String firstName, String lastName, String email, String password, UserRole userRole) {
+        return userDaoJdbcImpl.createUser(firstName, lastName, email, password,  userRole);
+    }
+
+    @Override
+    public User findUserById(int userId) {
+        return userDaoJdbcImpl.findUserById(userId);
     }
 
     @Override
     public boolean deleteUserById(int userId) {
-        return false;
+        return userDaoJdbcImpl.deleteUserById(userId);
     }
 
-
-    //TODO (3) лучше возвращать булеан, стрингу хэшкода или... И что делать если юзер не найден ?
     @Override
-    public String addSubscriptionToUserById(int id) {
-        String hash = "";
+    public boolean updateUser(User user) {
+        return updateUser(user);
+    }
+
+    @Override
+    public boolean addSubscriptionToUserById(int id) {
+        String hash = null;
         try {
             hash = generateHashForSubscription(algorithmName, subscription);
-        } catch (Exception e) { e.printStackTrace(); }
-
-        userDaoJdbc.updateSubscriptionById(hash, id);
-
-        return hash;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userDaoJdbcImpl.updateSubscriptionById(hash, id);
     }
 
-    //TODO (2)
     private String generateHashForSubscription(String algorithmName, String stringForCoding)
-                                                                          throws Exception {
-            MessageDigest md = MessageDigest.getInstance(algorithmName);
-            md.update(stringForCoding.getBytes());
-            return DatatypeConverter.printHexBinary(md.digest()).toUpperCase();
+            throws Exception {
+        MessageDigest md = MessageDigest.getInstance(algorithmName);
+        md.update(stringForCoding.getBytes());
+        return DatatypeConverter.printHexBinary(md.digest()).toUpperCase();
     }
 
     @Override
     public boolean deleteSubscriptionFromUserById(int id) {
-        userDaoJdbc.updateSubscriptionById("", id);
-        return true;
+        return userDaoJdbcImpl.updateSubscriptionById("", id);
     }
 }
