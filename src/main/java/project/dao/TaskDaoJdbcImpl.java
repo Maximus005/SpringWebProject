@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import project.model.Task;
 import project.model.TaskPriority;
+import project.model.User;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -51,6 +52,11 @@ public class TaskDaoJdbcImpl implements TaskDao {
     public boolean deleteTaskById(int taskId) {
         jdbcTemplate.update(DELETE_BY_ID, taskId);
         return true;
+    }
+
+    @Override
+    public boolean deleteTaskByIdByUser(int taskId, User user) {
+        return deleteTaskById(taskId);
     }
 
     @Override

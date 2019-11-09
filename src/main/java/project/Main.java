@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import project.dao.TaskDaoJdbcImpl;
 import project.dao.UserDaoJdbcImpl;
+import project.model.User;
+import project.model.UserRole;
 
 @Configuration
 @ComponentScan
@@ -35,6 +37,9 @@ public class Main {
 
         System.out.println(jdbcUser.securityModuleImpl.isAdmin("ADMIN"));
 
-        jdbcTask.createTask("i12et3456",2);
+        jdbcTask.createTask("i12e6t3uwq456",2);
+
+        User user = jdbcUser.createUser("aaIygor", "Kornaeluk", "akorno@mail.ru", "pass", UserRole.ADMIN);
+        jdbcTask.deleteTaskByIdByUser(15,user);
     }
 }

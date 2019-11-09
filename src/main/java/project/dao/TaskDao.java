@@ -2,6 +2,7 @@ package project.dao;
 
 import project.model.Task;
 import project.model.TaskPriority;
+import project.model.User;
 
 import java.util.List;
 
@@ -10,6 +11,12 @@ public interface TaskDao {
     Task createTask(String taskName, int userId);
 
     boolean deleteTaskById(int taskId);
+
+    /**
+     * Method using just for demonstration LegacySecurityModule class and  corresponding AOP class.
+     * An exception will be thrown if the user is not an admin
+     */
+    boolean deleteTaskByIdByUser(int taskId, User user);
 
     boolean markTaskAsFinishedById(int taskId);
 
@@ -24,4 +31,6 @@ public interface TaskDao {
     Task findTaskById(int taskId);
 
     Task findTaskByName(String name);
+
+
 }

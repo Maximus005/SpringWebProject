@@ -7,11 +7,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import project.dao.TaskDao;
-import project.dao.TaskDaoJdbcImpl;
 import project.dao.UserDao;
-import project.dao.UserDaoJdbcImpl;
 import project.model.User;
-import project.service.TaskServiceImpl;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
@@ -33,7 +30,7 @@ public class VerifierOfUserStatusAndNumberOfTasks {
     public void handle() {}
 
     @Before("handle()")
-    public void aspect(JoinPoint joinPoint) {
+    public void advice(JoinPoint joinPoint) {
         try {
             Integer userId = (Integer) joinPoint.getArgs()[1];
             String hashOfSubscription = DatatypeConverter
