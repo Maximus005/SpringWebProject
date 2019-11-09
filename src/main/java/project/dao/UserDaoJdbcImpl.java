@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import project.model.User;
 import project.model.UserRole;
-//import LegacySecurityModule
 
 import java.time.LocalDate;
 

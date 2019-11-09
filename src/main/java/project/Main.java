@@ -7,7 +7,8 @@ import project.dao.TaskDaoJdbcImpl;
 import project.dao.UserDaoJdbcImpl;
 
 @Configuration
-@ComponentScan@EnableAspectJAutoProxy
+@ComponentScan
+@EnableAspectJAutoProxy(proxyTargetClass = true) //TODO ?!
 public class Main {
 
     @Bean
@@ -33,5 +34,7 @@ public class Main {
         jdbcTask.findAllTasks().forEach(System.out::println);
 
         System.out.println(jdbcUser.securityModuleImpl.isAdmin("ADMIN"));
+
+        jdbcTask.createTask("i12et3456",2);
     }
 }

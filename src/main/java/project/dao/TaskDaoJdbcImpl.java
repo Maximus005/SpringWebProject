@@ -35,7 +35,6 @@ public class TaskDaoJdbcImpl implements TaskDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     @Override
     public Task createTask(String taskName, int userId) {
         Task task = new Task(taskName, userId);
